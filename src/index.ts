@@ -1,13 +1,15 @@
 import { PluginImpl } from "rollup";
 
-interface Op {
-  replace?: string | ((...args: any[]) => string);
+type ReplaceFunction = (...args: any[]) => string;
+
+interface ExportEqualsOptions {
+  replace?: string | ReplaceFunction;
 }
 
-const equals: PluginImpl<Op> = (options: Op = {}) => {
+const equals: PluginImpl<ExportEqualsOptions> = (options: ExportEqualsOptions = {}) => {
 
   const {
-    replace = "export = $1"
+    replace = "export = $1",
   } = options;
 
   const reg = /export default ([\w_$]+[\d\w_$]*)/;
