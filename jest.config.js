@@ -1,17 +1,28 @@
+const CI = process.env.CI;
+const coverageThreshold = 0;
+
 module.exports = {
 
   testEnvironment: "node",
 
-  // collectCoverage: false,
-  // collectCoverageFrom: null,
+  collectCoverage: true,
+  collectCoverageFrom: [
+    "dist/**",
+  ],
   coverageDirectory: "coverage",
-  // coverageReporters: [
-  //   "json",
-  //   "text",
-  //   "lcov",
-  //   "clover"
-  // ],
-  // coverageThreshold: null,
+  coverageReporters: [
+    CI ? "json" : "lcov",
+    "text",
+    "text-summary",
+  ],
+  coverageThreshold: {
+    global: {
+      branches: coverageThreshold,
+      functions: coverageThreshold,
+      lines: coverageThreshold,
+      statements: coverageThreshold,
+    },
+  },
 
   verbose: true,
 
