@@ -17,6 +17,11 @@
     "build": "rollup -c",
     "test": "jest --colors"
   },
+  "files": [
+    "dist",
+    "types",
+    "src"
+  ],
   "peerDependencies": {
     "rollup": "^1.0.0"
   },
