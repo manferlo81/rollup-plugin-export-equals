@@ -2,7 +2,7 @@
 
 Transforms `export default something` to `export = something` for CommonJS module export
 
-> *for most applications you wont need this plugin, but it is specially useful after* [`rollup-plugin-dts`](https://github.com/Swatinem/rollup-plugin-dts) *if your want to build a CommonJS module.*
+> *for most applications you won't need this plugin, but it is specially useful after* [`rollup-plugin-dts`](https://github.com/Swatinem/rollup-plugin-dts) *if your want to build a CommonJS module.*
 
 # Install
 
