@@ -32,6 +32,16 @@ export default {
 }
 ```
 
+# Options
+
+### replace
+
+`replace: string`
+`replace: (...args: any[]) => string`
+`default value: "export = $1"`
+
+*string or function to be passed to* `code.replace` *function.* `$1` *refers to the original value captured from* `export default ...`
+
 # License
 
 [MIT License](https://github.com/manferlo81/rollup-plugin-export-equals/blob/master/LICENSE)
