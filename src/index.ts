@@ -1,19 +1,23 @@
 import { PluginImpl } from "rollup";
 
-// tslint:disable-next-line: no-empty-interface
-interface Op { }
+interface Op {
+  replace?: string;
+}
 
 const equals: PluginImpl<Op> = (options: Op = {}) => {
 
-  const input = /export default ([\w_$]+[\d\w_$]*)/;
-  const output = "export = $1";
+  const {
+    replace = "export = $1"
+  } = options;
+
+  const reg = /export default ([\w_$]+[\d\w_$]*)/;
 
   return {
 
     name: "export-equals",
 
     renderChunk(code) {
-      return code.replace(input, output as any);
+      return code.replace(reg, replace);
     },
 
   };
