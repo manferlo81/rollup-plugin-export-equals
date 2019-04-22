@@ -14,14 +14,17 @@
   ],
   "scripts": {
     "dev": "rollup -cw",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "test": "jest --colors"
   },
   "peerDependencies": {
     "rollup": "^1.0.0"
   },
   "dependencies": {},
   "devDependencies": {
+    "@types/jest": "^24.0.11",
     "eslint": "^5.16.0",
+    "jest": "^24.7.1",
     "rollup": "^1.10.1",
     "rollup-plugin-buble": "^0.19.6",
     "rollup-plugin-dts": "^0.15.0",
