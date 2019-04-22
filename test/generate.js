@@ -4,19 +4,20 @@ const path = require("path");
 const { dts } = require("rollup-plugin-dts");
 const equals = require("..");
 
-async function generate() {
+async function generate(filename, options) {
+
   const build = await rollup({
-    input: path.resolve(__dirname, "example.ts"),
+    input: path.resolve(__dirname, filename),
     plugins: [
       dts(),
-      equals(),
+      equals(options),
     ],
   });
-  const { output: [{ code }] } = await build.generate({
-    file: "output.d.ts",
-    format: "es",
-  });
+
+  const { output: [{ code }] } = await build.generate({ file: "output.d.ts" });
+
   return code;
+
 }
 
 module.exports = generate;
