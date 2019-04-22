@@ -1,7 +1,7 @@
 import { PluginImpl } from "rollup";
 
 interface Op {
-  replace?: string;
+  replace?: string | ((...args: any[]) => string);
 }
 
 const equals: PluginImpl<Op> = (options: Op = {}) => {
@@ -17,7 +17,10 @@ const equals: PluginImpl<Op> = (options: Op = {}) => {
     name: "export-equals",
 
     renderChunk(code) {
-      return code.replace(reg, replace);
+      if (!reg.test(code)) {
+        return null;
+      }
+      return code.replace(reg, replace as any);
     },
 
   };
