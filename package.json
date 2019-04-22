@@ -9,7 +9,8 @@
     "rollup",
     "plugin",
     "rollup-plugin",
-    "esport",
+    "export",
+    "exports",
     "equals"
   ],
   "scripts": {
