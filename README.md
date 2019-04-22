@@ -1,5 +1,7 @@
 # rollup-plugin-export-equals
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/manferlo81/rollup-plugin-export-equals.svg)](https://greenkeeper.io/)
+
 Transforms `export default something` to `export = something` for CommonJS module export
 
 > *for most applications you won't need this plugin, but it is specially useful after* [`rollup-plugin-dts`](https://github.com/Swatinem/rollup-plugin-dts) *if your want to build a CommonJS module.*
