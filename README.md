@@ -6,13 +6,13 @@ Transforms `export default something` to `export = something` for CommonJS modul
 
 > *for most applications you won't need this plugin, but it is specially useful after* [`rollup-plugin-dts`](https://github.com/Swatinem/rollup-plugin-dts) *if your want to build a CommonJS module.*
 
-# Install
+## Install
 
 ```sh
 npm install --save-dev rollup-plugin-export-equals
 ```
 
-# Usage
+## Usage
 
 ```javascript
 // rollup.config.js
@@ -32,9 +32,9 @@ export default {
 }
 ```
 
-# Options
+## Options
 
-### replace
+#### replace
 
 `replace: string`
 `replace: (...args: any[]) => string`
@@ -42,6 +42,6 @@ export default {
 
 *string or function to be passed to* `code.replace` *function.* `$1` *refers to the original value captured from* `export default ...`
 
-# License
+## License
 
 [MIT License](https://github.com/manferlo81/rollup-plugin-export-equals/blob/master/LICENSE)
