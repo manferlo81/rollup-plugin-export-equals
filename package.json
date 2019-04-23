@@ -16,8 +16,8 @@
   "scripts": {
     "lint": "tslint src/**",
     "clean": "rm -rf dist types coverage",
-    "dev": "rollup -cw",
-    "build": "npm run lint && rollup -c",
+    "dev": "bundlib -dw",
+    "build": "npm run lint && bundlib",
     "test": "jest --colors",
     "preversion": "npm run clean && npm run build && npm test"
   },
