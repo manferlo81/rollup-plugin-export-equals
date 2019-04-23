@@ -1,5 +1,5 @@
 const CI = process.env.CI;
-const coverageThreshold = 0;
+const coverageThreshold = 95;
 
 module.exports = {
 
