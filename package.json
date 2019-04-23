@@ -18,7 +18,8 @@
     "clean": "rm -rf dist types coverage",
     "dev": "rollup -cw",
     "build": "npm run lint && rollup -c",
-    "test": "jest --colors"
+    "test": "jest --colors",
+    "preversion": "npm run clean && npm run build && npm test"
   },
   "files": [
     "dist",
