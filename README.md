@@ -34,11 +34,17 @@ export default {
 
 ## Options
 
+#### file
+
+* `file: string`
+
+*path to the file which content to be replaced. if provided the plugin will transform the file instead of the bundled output*
+
 #### replace
 
-`replace: string`
-`replace: (...args: any[]) => string`
-`default value: "export = $1"`
+* `replace: string`
+* `replace: (...args: any[]) => string`
+* `default value: "export = $1"`
 
 *string or function to be passed to* `code.replace` *function.* `$1` *refers to the original value captured from* `export default ...`
 
