@@ -44,4 +44,4 @@ export default {
 
 ## License
 
-[MIT License](https://github.com/manferlo81/rollup-plugin-export-equals/blob/master/LICENSE)
+[MIT](LICENSE) &copy; Manuel Fernández
