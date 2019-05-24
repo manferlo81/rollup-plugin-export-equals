@@ -1,3 +1,7 @@
+# 0.2.1
+
+* dependencies updated
+
 # 0.2.0
 
 * added file mode
