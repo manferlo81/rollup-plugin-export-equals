@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-export-equals",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Transforms `export default something` to `export = something` for CommonJS module export",
   "main": "dist/export-equals.cjs.js",
   "module": "dist/export-equals.es.js",
@@ -17,7 +17,7 @@
     "equals"
   ],
   "scripts": {
-    "lint": "tslint src/**",
+    "lint": "tslint src/**/*.ts",
     "clean": "rm -rf dist types coverage",
     "dev": "bundlib -dw",
     "build": "npm run lint && bundlib",
@@ -34,10 +34,12 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^24.0.11",
-    "bundlib": "^0.2.1",
+    "@types/jest": "^24.0.13",
+    "@types/node": "^12.0.2",
+    "bundlib": "^0.2.6",
     "eslint": "^5.16.0",
-    "jest": "^24.7.1",
+    "jest": "^24.8.0",
+    "rollup-plugin-dts": "^0.15.1",
     "tslint": "^5.16.0",
     "typescript": "^3.4.5"
   },

@@ -25,3 +25,5 @@ test("should respect replace option", async () => {
   expect(code).toMatch("module.exports = ");
 
 });
+
+test.todo("test file mode");

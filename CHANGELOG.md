@@ -1,3 +1,7 @@
+# 0.2.0
+
+* added file mode
+
 # 0.1.x
 
 * First release
