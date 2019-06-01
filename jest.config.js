@@ -1,9 +1,11 @@
 const CI = process.env.CI;
-// const coverageThreshold = 95;
+const threshold = 60;
 
 module.exports = {
 
   testEnvironment: "node",
+
+  cacheDirectory: ".cache/jest",
 
   collectCoverage: true,
   collectCoverageFrom: [
@@ -15,14 +17,14 @@ module.exports = {
     "text",
     "text-summary",
   ],
-  // coverageThreshold: {
-  //   global: {
-  //     branches: coverageThreshold,
-  //     functions: coverageThreshold,
-  //     lines: coverageThreshold,
-  //     statements: coverageThreshold,
-  //   },
-  // },
+  coverageThreshold: {
+    global: {
+      branches: threshold,
+      functions: threshold,
+      lines: threshold,
+      statements: threshold,
+    },
+  },
 
   verbose: true,
 
