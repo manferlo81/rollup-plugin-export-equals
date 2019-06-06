@@ -1,6 +1,7 @@
 # 0.2.4 (07-06-2019)
 
-* dependencies updated
+* rolled back to `rollup-plugin-dts@^0.15.1`
+* documentation improved
 
 # 0.2.3 (07-06-2019)
 

@@ -16,6 +16,8 @@ npm install --save-dev rollup-plugin-export-equals
 
 #### with `rollup-plugin-dts`
 
+> :warning: it doesn't support `rollup-plugin-dts@^1.0.0` jet.
+
 ```javascript
 // rollup.config.js
 import { dts } from "rollup-plugin-dts";
