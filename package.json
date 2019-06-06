@@ -38,7 +38,7 @@
     "bundlib": "^0.5.1",
     "eslint": "^5.16.0",
     "jest": "^24.8.0",
-    "rollup-plugin-dts": "^1.0.0",
+    "rollup-plugin-dts": "^0.15.1",
     "tslint": "^5.17.0",
     "typescript": "^3.5.1"
   },
