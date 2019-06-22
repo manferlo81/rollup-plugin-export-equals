@@ -5,6 +5,7 @@
 
 * dependencies updated
 * test refactoring
+* documentation for `rollup-plugin-dts@1.x.x`
 
 ## 0.2.4
 *07-JUN-2019*
