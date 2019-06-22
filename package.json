@@ -1,12 +1,13 @@
 {
   "name": "rollup-plugin-export-equals",
   "version": "0.3.0",
-  "description": "Transforms `export default something` to `export = something` for CommonJS module export",
+  "description": "Transforms export default something to export = something for CommonJS module export",
   "main": "dist/export-equals.cjs.js",
   "module": "dist/export-equals.es.js",
   "bundlib": {
     "equals": true
   },
+  "types": "types/index.d.ts",
   "typings": "types/index.d.ts",
   "keywords": [
     "rollup",
@@ -26,8 +27,7 @@
   },
   "files": [
     "dist",
-    "types",
-    "src"
+    "types"
   ],
   "peerDependencies": {
     "rollup": "^1.0.0"
@@ -42,7 +42,10 @@
     "tslint": "^5.18.0",
     "typescript": "^3.5.2"
   },
-  "author": "Manuel Fernandez <manferlo81@gmail.com>",
+  "author": {
+    "name": "Manuel Fernandez",
+    "email": "manferlo81@gmail.com"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/manferlo81/rollup-plugin-export-equals.git"
