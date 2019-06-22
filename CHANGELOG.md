@@ -4,6 +4,7 @@
 *22-JUN-2019*
 
 * dependencies updated
+* test refactoring
 
 ## 0.2.4
 *07-JUN-2019*

@@ -1,15 +1,14 @@
 const { rollup } = require("rollup");
 const path = require("path");
 
-const { dts } = require("rollup-plugin-dts");
 const equals = require("..");
 
-async function generate(filename, options) {
+async function generate(filename, plugins, options) {
 
   const build = await rollup({
     input: path.resolve(__dirname, filename),
     plugins: [
-      dts(),
+      ...plugins,
       equals(options),
     ],
   });
