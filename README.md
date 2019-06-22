@@ -83,7 +83,7 @@ export default {
 ### file
 
 ```typescript
-file: string
+file: string;
 ```
 
 *Path to the file which content to be replaced. If provided the plugin will transform the file in-place instead of the bundled output. It will process the file after it has been writen to disk. For example after* `rollup-plugin-typescript2` *has written it to disk.* 
@@ -91,14 +91,13 @@ file: string
 ### replace
 
 ```typescript
-replace: string
-replace: (...args: any[]) => string
+replace: string;
+replace: (...args: any[]) => string;
+default: "export = $1"
 ```
-
-***defaults to:*** `"export = $1"`
 
 *String or function to be passed to* `code.replace` *function.* `$1` *refers to the original value captured from* `export default ...`*.*
 
 ## License
 
-[MIT](LICENSE) &copy; Manuel Fernández
+[MIT](LICENSE) &copy; [Manuel Fernández](https://github.com/manferlo81)
