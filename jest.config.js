@@ -5,7 +5,7 @@ module.exports = {
 
   testEnvironment: "node",
 
-  cacheDirectory: ".cache/jest",
+  cacheDirectory: "node_modules/.cache/jest",
 
   collectCoverage: true,
   collectCoverageFrom: [
