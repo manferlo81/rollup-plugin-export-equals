@@ -1,7 +1,7 @@
 # rollup-plugin-export-equals changelog
 
 ## 0.3.1
-*25-JUN-2019*
+*27-JUN-2019*
 
 * dependencies updated
 
