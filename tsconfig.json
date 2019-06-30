@@ -7,6 +7,6 @@
     "esModuleInterop": true,
     "noUnusedLocals": true,
     "noImplicitReturns": true,
-    "noImplicitThis": true,
+    "noImplicitThis": true
   }
 }
