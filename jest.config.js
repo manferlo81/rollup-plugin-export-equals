@@ -4,12 +4,15 @@ const threshold = 60;
 module.exports = {
 
   testEnvironment: "node",
+  browser: false,
 
   cacheDirectory: "node_modules/.cache/jest",
 
+  preset: "ts-jest",
+
   collectCoverage: true,
   collectCoverageFrom: [
-    "dist/**",
+    "src/**/*.ts",
   ],
   coverageDirectory: "coverage",
   coverageReporters: [

@@ -1,9 +1,10 @@
 # rollup-plugin-export-equals changelog
 
 ## 0.3.1
-*27-JUN-2019*
+*30-JUN-2019*
 
 * dependencies updated
+* `ts-jest` for typescript test
 
 ## 0.3.0
 *22-JUN-2019*
