@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-export-equals",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Transforms export default something to export = something for CommonJS module export",
   "main": "dist/export-equals.cjs.js",
   "module": "dist/export-equals.es.js",
