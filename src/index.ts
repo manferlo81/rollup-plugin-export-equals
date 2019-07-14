@@ -1,9 +1,9 @@
-import { readFile, writeFile } from "fs";
+import { readFile as fsReadFile, writeFile as fsWriteFile } from "fs";
 import { PluginImpl } from "rollup";
 import { promisify } from "util";
 
-const read = promisify(readFile);
-const write = promisify(writeFile);
+const readFile: (filename: string) => Promise<string> = promisify(fsReadFile) as any;
+const writeFile: (filename: string, data: string) => Promise<void> = promisify<string, string>(fsWriteFile);
 
 type ReplaceFunction = (...args: any[]) => string;
 
@@ -43,8 +43,9 @@ const equals: PluginImpl<ExportEqualsOptions> = (options: ExportEqualsOptions = 
         return;
       }
 
-      const content = await read(filename);
-      await write(
+      const content = await readFile(filename);
+
+      await writeFile(
         filename,
         replaceExport(content.toString()),
       );
