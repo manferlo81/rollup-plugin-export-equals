@@ -25,7 +25,7 @@
     "dev": "bundlib -dw",
     "build": "npm run lint && bundlib -d",
     "test": "jest --color",
-    "preversion": "npm run clean && npm run build && npm test"
+    "preversion": "npm run clean && npm test && npm run build"
   },
   "files": [
     "dist",
