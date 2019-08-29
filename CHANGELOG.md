@@ -2,7 +2,7 @@
 
 ## 0.3.4
 
-***12-AUG-2019***
+***29-AUG-2019***
 
 * dependencies updated
 
