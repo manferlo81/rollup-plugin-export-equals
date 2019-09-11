@@ -1,6 +1,6 @@
 # rollup-plugin-export-equals
 
-[![CircleCI](https://circleci.com/gh/manferlo81/rollup-plugin-export-equals.svg?style=svg)](https://circleci.com/gh/manferlo81/rollup-plugin-export-equals) [![Greenkeeper badge](https://badges.greenkeeper.io/manferlo81/rollup-plugin-export-equals.svg)](https://greenkeeper.io/) [![npm](https://img.shields.io/npm/v/rollup-plugin-export-equals.svg)](https://www.npmjs.com/package/rollup-plugin-export-equals) [![David](https://img.shields.io/david/manferlo81/rollup-plugin-export-equals.svg)](https://david-dm.org/manferlo81/rollup-plugin-export-equals) [![David](https://img.shields.io/david/dev/manferlo81/rollup-plugin-export-equals.svg)](https://david-dm.org/manferlo81/rollup-plugin-export-equals?type=dev) [![David](https://img.shields.io/david/peer/manferlo81/rollup-plugin-export-equals.svg)](https://david-dm.org/manferlo81/rollup-plugin-export-equals?type=peer) [![install size](https://packagephobia.now.sh/badge?p=rollup-plugin-export-equals)](https://packagephobia.now.sh/result?p=rollup-plugin-export-equals) [![npm bundle size](https://img.shields.io/bundlephobia/min/rollup-plugin-export-equals.svg)](https://bundlephobia.com/result?p=rollup-plugin-export-equals) [![codecov](https://codecov.io/gh/manferlo81/rollup-plugin-export-equals/branch/master/graph/badge.svg)](https://codecov.io/gh/manferlo81/rollup-plugin-export-equals) [![Known Vulnerabilities](https://snyk.io/test/github/manferlo81/rollup-plugin-export-equals/badge.svg?targetFile=package.json)](https://snyk.io/test/github/manferlo81/rollup-plugin-export-equals?targetFile=package.json) [![GitHub](https://img.shields.io/github/license/manferlo81/rollup-plugin-export-equals.svg)](https://github.com/manferlo81/rollup-plugin-export-equals/blob/master/LICENSE)
+[![CircleCI](https://circleci.com/gh/manferlo81/rollup-plugin-export-equals.svg?style=svg)](https://circleci.com/gh/manferlo81/rollup-plugin-export-equals) [![dependabot](https://badgen.net/dependabot/manferlo81/rollup-plugin-export-equals/?icon=dependabot)](https://github.com/manferlo81/rollup-plugin-export-equals) [![npm](https://badgen.net/npm/v/rollup-plugin-export-equals)](https://www.npmjs.com/package/rollup-plugin-export-equals) [![codecov](https://codecov.io/gh/manferlo81/rollup-plugin-export-equals/branch/master/graph/badge.svg)](https://codecov.io/gh/manferlo81/rollup-plugin-export-equals) [![dependencies](https://badgen.net/david/dep/manferlo81/rollup-plugin-export-equals)](https://david-dm.org/manferlo81/rollup-plugin-export-equals) [![dev dependencies](https://badgen.net/david/dev/manferlo81/rollup-plugin-export-equals)](https://david-dm.org/manferlo81/rollup-plugin-export-equals?type=dev) [![peer dependencies](https://badgen.net/david/peer/manferlo81/rollup-plugin-export-equals)](https://david-dm.org/manferlo81/rollup-plugin-export-equals?type=peer) [![install size](https://packagephobia.now.sh/badge?p=rollup-plugin-export-equals)](https://packagephobia.now.sh/result?p=rollup-plugin-export-equals) [![npm bundle size](https://badgen.net/bundlephobia/min/rollup-plugin-export-equals)](https://bundlephobia.com/result?p=rollup-plugin-export-equals) [![Known Vulnerabilities](https://snyk.io/test/github/manferlo81/rollup-plugin-export-equals/badge.svg?targetFile=package.json)](https://snyk.io/test/github/manferlo81/rollup-plugin-export-equals?targetFile=package.json) [![license](https://badgen.net/npm/license/rollup-plugin-export-equals)](https://github.com/manferlo81/rollup-plugin-export-equals/blob/master/LICENSE)
 
 Transforms `export default something` to `export = something` for CommonJS module type declaration export.
 
@@ -14,7 +14,7 @@ npm i -D rollup-plugin-export-equals
 
 ## Usage
 
-#### with `rollup-plugin-dts@0.x.x`
+### with `rollup-plugin-dts@0.x.x`
 
 ```javascript
 // rollup.config.js
@@ -34,7 +34,7 @@ export default {
 }
 ```
 
-#### with `rollup-plugin-dts@1.x.x`
+### with `rollup-plugin-dts@1.x.x`
 
 ```javascript
 // rollup.config.js
@@ -54,7 +54,7 @@ export default {
 }
 ```
 
-#### with `rollup-plugin-typescript2`
+### with `rollup-plugin-typescript2`
 
 ```javascript
 // rollup.config.js
@@ -86,7 +86,7 @@ export default {
 file: string;
 ```
 
-*Path to the file which content to be replaced. If provided the plugin will transform the file in-place instead of the bundled output. It will process the file after it has been writen to disk. For example after* `rollup-plugin-typescript2` *has written it to disk.* 
+Path to the file which content to be replaced. If provided the plugin will transform the file in-place instead of the bundled output. It will process the file after it has been writen to disk. For example after `rollup-plugin-typescript2` has written it to disk.
 
 ### replace
 
@@ -96,7 +96,7 @@ replace: (...args: any[]) => string;
 default: "export = $1"
 ```
 
-*String or function to be passed to* `code.replace` *function.* `$1` *refers to the original value captured from* `export default ...`*.*
+String or function to be passed to `code.replace` function. `$1` refers to the original value captured from `export default ...`.
 
 ## License
 
