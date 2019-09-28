@@ -40,7 +40,7 @@
     "bundlib": "^0.12.5",
     "chokidar": "^3.0.2",
     "eslint": "^6.4.0",
-    "husky": "^3.0.5",
+    "husky": "^3.0.6",
     "jest": "^24.9.0",
     "rollup-plugin-dts": "^1.1.7",
     "ts-jest": "^24.1.0",
