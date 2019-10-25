@@ -39,7 +39,7 @@
     "@types/node": "^12.11.7",
     "bundlib": "^0.13.0",
     "chokidar": "^3.2.2",
-    "eslint": "^6.5.1",
+    "eslint": "^6.6.0",
     "husky": "^3.0.9",
     "jest": "^24.9.0",
     "rollup-plugin-dts": "^1.1.10",
