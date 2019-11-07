@@ -45,7 +45,7 @@
     "rollup-plugin-dts": "^1.1.10",
     "ts-jest": "^24.1.0",
     "tslint": "^5.20.0",
-    "typescript": "^3.6.4"
+    "typescript": "^3.7.2"
   },
   "author": {
     "name": "Manuel Fernandez",
