@@ -20,12 +20,12 @@
     "equals"
   ],
   "scripts": {
-    "lint": "tslint src/**/*.ts",
+    "lint": "eslint src/** test/**",
     "clean": "rm -rf node_modules/.cache/bundlib node_modules/.cache/jest node_modules/.cache/.temp dist types coverage",
     "dev": "bundlib -dw",
     "build": "npm run lint && bundlib -d",
     "test": "jest --color",
-    "preversion": "npm run clean && npm test && npm run build"
+    "preversion": "npm run clean && npm run lint && npm test && npm run build"
   },
   "files": [
     "dist",
@@ -37,6 +37,8 @@
   "devDependencies": {
     "@types/jest": "^24.0.22",
     "@types/node": "^12.12.7",
+    "@typescript-eslint/eslint-plugin": "^2.6.1",
+    "@typescript-eslint/parser": "^2.6.1",
     "bundlib": "^0.13.1",
     "chokidar": "^3.3.0",
     "eslint": "^6.6.0",
@@ -44,7 +46,6 @@
     "jest": "^24.9.0",
     "rollup-plugin-dts": "^1.1.12",
     "ts-jest": "^24.1.0",
-    "tslint": "^5.20.0",
     "typescript": "^3.7.2"
   },
   "author": {
