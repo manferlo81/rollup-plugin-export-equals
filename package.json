@@ -20,7 +20,7 @@
     "equals"
   ],
   "scripts": {
-    "lint": "eslint src/** test/**",
+    "lint": "eslint src/** __test__/**",
     "clean": "rm -rf node_modules/.cache/bundlib node_modules/.cache/jest node_modules/.cache/.temp dist types coverage",
     "dev": "bundlib -dw",
     "build": "npm run lint && bundlib -d",
