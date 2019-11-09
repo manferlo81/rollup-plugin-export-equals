@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "lint": "eslint src/** __test__/**",
-    "clean": "rm -rf node_modules/.cache/bundlib node_modules/.cache/jest node_modules/.cache/.temp dist types coverage",
+    "clean": "rimraf node_modules/.cache/bundlib node_modules/.cache/jest node_modules/.cache/.temp dist types coverage",
     "dev": "bundlib -dw",
     "build": "npm run lint && bundlib -d",
     "test": "jest --color -w 3",
@@ -45,6 +45,7 @@
     "eslint": "^6.6.0",
     "husky": "^3.0.9",
     "jest": "^24.9.0",
+    "rimraf": "^3.0.0",
     "rollup-plugin-dts": "^1.1.12",
     "standard-version": "^7.0.0",
     "ts-jest": "^24.1.0",
