@@ -1,2 +1,2 @@
 declare function test(): void;
-export { test };
+export { test }

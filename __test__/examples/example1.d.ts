@@ -1,2 +1,2 @@
 declare function test(): void;
-export default test;
+export default test
