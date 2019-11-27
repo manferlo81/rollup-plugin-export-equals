@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "include": [
-    "__test__"
+    "src/**/*.ts",
+    "__test__/**/*.ts"
   ]
 }
