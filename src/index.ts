@@ -2,7 +2,7 @@ import { readFile as fsReadFile, writeFile as fsWriteFile } from 'fs'
 import { PluginImpl } from 'rollup'
 import { promisify } from 'util'
 
-const readFile: (filename: string) => Promise<string> = promisify(fsReadFile) as any
+const readFile: (filename: string) => Promise<Buffer> = promisify(fsReadFile)
 const writeFile: (filename: string, data: string) => Promise<void> = promisify<string, string>(fsWriteFile)
 
 type ReplaceFunction = (...args: any[]) => string;
