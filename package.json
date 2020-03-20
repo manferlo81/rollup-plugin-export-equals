@@ -2,6 +2,14 @@
   "name": "rollup-plugin-export-equals",
   "version": "0.3.6",
   "description": "Transforms export default something to export = something for CommonJS module export",
+  "keywords": [
+    "rollup",
+    "plugin",
+    "rollup-plugin",
+    "export",
+    "exports",
+    "equals"
+  ],
   "main": "dist/export-equals.js",
   "module": "dist/export-equals.mjs",
   "bundlib": {
@@ -11,14 +19,6 @@
   },
   "types": "types/index.d.ts",
   "typings": "types/index.d.ts",
-  "keywords": [
-    "rollup",
-    "plugin",
-    "rollup-plugin",
-    "export",
-    "exports",
-    "equals"
-  ],
   "scripts": {
     "lint": "eslint src/** __test__/**",
     "clean": "rimraf node_modules/.cache/bundlib node_modules/.cache/jest node_modules/.cache/.temp dist types coverage",
@@ -28,14 +28,12 @@
     "prerelease": "npm run clean && npm run lint && npm test && npm run build",
     "release": "standard-version"
   },
-  "files": [
-    "dist",
-    "types"
-  ],
-  "peerDependencies": {
-    "rollup": "^2.0.0"
+  "engines": {
+    "node": ">=8"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.2",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
@@ -47,11 +45,22 @@
     "jest": "^25.1.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.1.0",
+    "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-dts": "^1.2.1",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-export-equals": "^0.3.6",
+    "rollup-plugin-typescript2": "^0.26.0",
     "standard-version": "^7.1.0",
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.3"
   },
+  "peerDependencies": {
+    "rollup": "^2.0.0"
+  },
+  "files": [
+    "dist",
+    "types"
+  ],
   "author": {
     "name": "Manuel Fernandez",
     "email": "manferlo81@gmail.com"
