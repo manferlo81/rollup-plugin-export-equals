@@ -48,7 +48,7 @@
     "rollup-plugin-dts": "^1.4.2",
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-export-equals": "^0.3.6",
-    "rollup-plugin-typescript2": "^0.27.0",
+    "rollup-plugin-typescript2": "^0.27.1",
     "standard-version": "^8.0.0",
     "ts-jest": "^25.5.1",
     "typescript": "^3.9.2"
