@@ -1,4 +1,4 @@
-const threshold = 60
+const threshold = 60;
 
 module.exports = {
 
@@ -27,4 +27,4 @@ module.exports = {
 
   verbose: true,
 
-}
+};
