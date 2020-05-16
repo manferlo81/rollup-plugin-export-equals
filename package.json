@@ -12,10 +12,6 @@
   ],
   "main": "dist/export-equals.js",
   "module": "dist/export-equals.mjs",
-  "bundlib": {
-    "esModule": true,
-    "interop": true
-  },
   "types": "types/index.d.ts",
   "typings": "types/index.d.ts",
   "scripts": {
