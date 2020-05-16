@@ -1,9 +1,9 @@
-import { readFile as fsReadFile, writeFile as fsWriteFile } from 'fs'
-import { PluginImpl } from 'rollup'
-import { promisify } from 'util'
+import { readFile as fsReadFile, writeFile as fsWriteFile } from 'fs';
+import { PluginImpl } from 'rollup';
+import { promisify } from 'util';
 
-const readFile: (filename: string) => Promise<Buffer> = promisify(fsReadFile)
-const writeFile: (filename: string, data: string) => Promise<void> = promisify<string, string>(fsWriteFile)
+const readFile: (filename: string) => Promise<Buffer> = promisify(fsReadFile);
+const writeFile: (filename: string, data: string) => Promise<void> = promisify<string, string>(fsWriteFile);
 
 type ReplaceFunction = (...args: any[]) => string;
 
@@ -17,11 +17,11 @@ const equals: PluginImpl<ExportEqualsOptions> = (options: ExportEqualsOptions = 
   const {
     file: filename,
     replace = 'export = $1',
-  } = options
+  } = options;
 
-  const reg = /export default ([\w_$]+[\d\w_$]*)/
+  const reg = /export default ([\w_$]+[\d\w_$]*)/;
 
-  const replaceExport = (code: string) => code.replace(reg, replace as any)
+  const replaceExport = (code: string) => code.replace(reg, replace as any);
 
   return {
 
@@ -30,30 +30,30 @@ const equals: PluginImpl<ExportEqualsOptions> = (options: ExportEqualsOptions = 
     renderChunk(code) {
 
       if (filename || !reg.test(code)) {
-        return null
+        return null;
       }
 
-      return replaceExport(code)
+      return replaceExport(code);
 
     },
 
     async writeBundle() {
 
       if (!filename) {
-        return
+        return;
       }
 
-      const content = await readFile(filename)
+      const content = await readFile(filename);
 
       await writeFile(
         filename,
         replaceExport(content.toString()),
-      )
+      );
 
     },
 
-  }
+  };
 
-}
+};
 
-export default equals
+export default equals;

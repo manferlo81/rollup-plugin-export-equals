@@ -1,6 +1,6 @@
-import path from 'path'
-import { Plugin, rollup as rollupBuild } from 'rollup'
-import equals from '../../src'
+import path from 'path';
+import { Plugin, rollup as rollupBuild } from 'rollup';
+import equals from '../../src';
 
 type ExportEqualsOptions = (typeof equals) extends ((options: infer O) => any) ? O : never;
 
@@ -11,7 +11,7 @@ function rollup(filename: string, plugins: Plugin[], options?: ExportEqualsOptio
       ...plugins,
       equals(options),
     ],
-  })
+  });
 }
 
-export default rollup
+export default rollup;
