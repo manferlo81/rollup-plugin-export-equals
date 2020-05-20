@@ -1,18 +1,13 @@
 import { readFile as fsReadFile, writeFile as fsWriteFile } from 'fs';
-import { PluginImpl } from 'rollup';
+import type { Plugin } from 'rollup';
 import { promisify } from 'util';
 
 const readFile: (filename: string) => Promise<Buffer> = promisify(fsReadFile);
 const writeFile: (filename: string, data: string) => Promise<void> = promisify<string, string>(fsWriteFile);
 
-type ReplaceFunction = (...args: any[]) => string;
+// type ReplaceFunction = (match: string, ...args: string[]) => string;
 
-interface ExportEqualsOptions {
-  file?: string;
-  replace?: string | ReplaceFunction;
-}
-
-const equals: PluginImpl<ExportEqualsOptions> = (options: ExportEqualsOptions = {}) => {
+function equals(options: equals.ExportEqualsOptions = {}): Plugin {
 
   const {
     file: filename,
@@ -21,7 +16,7 @@ const equals: PluginImpl<ExportEqualsOptions> = (options: ExportEqualsOptions = 
 
   const reg = /export default ([\w_$]+[\d\w_$]*)/;
 
-  const replaceExport = (code: string) => code.replace(reg, replace as any);
+  const replaceExport = (code: string) => code.replace(reg, replace as never);
 
   return {
 
@@ -54,6 +49,18 @@ const equals: PluginImpl<ExportEqualsOptions> = (options: ExportEqualsOptions = 
 
   };
 
-};
+}
+
+// eslint-disable-next-line @typescript-eslint/no-namespace
+namespace equals {
+
+  export type ReplaceFunction = (match: string, ...args: string[]) => string;
+
+  export interface ExportEqualsOptions {
+    file?: string;
+    replace?: ReplaceFunction | string;
+  }
+
+}
 
 export default equals;
