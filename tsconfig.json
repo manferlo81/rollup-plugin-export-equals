@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
+    "target": "ES2018",
+    "module": "ES2015",
     "moduleResolution": "Node",
+    "lib": [],
     "strict": true,
     "esModuleInterop": true,
     "noUnusedLocals": true,
