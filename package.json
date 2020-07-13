@@ -30,7 +30,7 @@
     "@babel/core": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "@types/jest": "^26.0.4",
-    "@types/node": "^14.0.22",
+    "@types/node": "^14.0.23",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "bundlib": "^0.16.4",
@@ -46,7 +46,7 @@
     "rollup-plugin-export-equals": "^0.3.6",
     "rollup-plugin-typescript2": "^0.27.1",
     "standard-version": "^8.0.1",
-    "ts-jest": "^26.1.1",
+    "ts-jest": "^26.1.2",
     "typescript": "^3.9.6"
   },
   "peerDependencies": {
