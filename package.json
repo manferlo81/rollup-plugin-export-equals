@@ -41,7 +41,7 @@
     "rimraf": "^3.0.2",
     "rollup-plugin-dts": "^1.4.10",
     "standard-version": "^9.0.0",
-    "ts-jest": "^26.3.0",
+    "ts-jest": "^26.4.0",
     "typescript": "^3.9.7"
   },
   "peerDependencies": {
