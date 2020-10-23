@@ -2,6 +2,13 @@
 
 ## Version History
 
+### [0.3.7](https://github.com/manferlo81/rollup-plugin-export-equals/compare/v0.3.6...v0.3.7) (2020-10-23)
+
+
+### Bug Fixes
+
+* Replace anything after "export default" ([81b6ca4](https://github.com/manferlo81/rollup-plugin-export-equals/commit/81b6ca4e2cc4a3d0e0b42f9def15d468b8fd791e))
+
 ### [0.3.6](https://github.com/manferlo81/rollup-plugin-export-equals/compare/v0.3.5...v0.3.6) (2020-03-12)
 
 ### [0.3.5](https://github.com/manferlo81/rollup-plugin-export-equals/compare/v0.3.4...v0.3.5) (2019-09-15)
