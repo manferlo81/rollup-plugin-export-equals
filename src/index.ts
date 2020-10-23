@@ -5,8 +5,6 @@ import { promisify } from 'util';
 const readFile: (filename: string) => Promise<Buffer> = promisify(fsReadFile);
 const writeFile: (filename: string, data: string) => Promise<void> = promisify<string, string>(fsWriteFile);
 
-// type ReplaceFunction = (match: string, ...args: string[]) => string;
-
 function equals(options: equals.ExportEqualsOptions = {}): Plugin {
 
   const {
