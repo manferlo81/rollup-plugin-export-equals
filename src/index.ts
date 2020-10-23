@@ -12,7 +12,7 @@ function equals(options: equals.ExportEqualsOptions = {}): Plugin {
     replace = 'export = $1',
   } = options;
 
-  const reg = /export default ([\w_$]+[\d\w_$]*)/;
+  const reg = /export default (.*)/;
 
   const replaceExport = (code: string) => code.replace(reg, replace as never);
 
