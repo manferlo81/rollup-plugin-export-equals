@@ -10,10 +10,16 @@
     "exports",
     "equals"
   ],
-  "main": "dist/export-equals.js",
-  "module": "dist/export-equals.mjs",
-  "types": "dist/index.d.ts",
-  "typings": "dist/index.d.ts",
+  "type": "commonjs",
+  "exports": {
+    "import": "./dist/export-equals.mjs",
+    "default": "./dist/export-equals.js"
+  },
+  "main": "./dist/export-equals.js",
+  "module": "./dist/export-equals.mjs",
+  "jsnext:main": "./dist/export-equals.mjs",
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "scripts": {
     "clean:cache": "rimraf node_modules/.cache/{bundlib,jest,.temp}",
     "clean:build": "rimraf dist coverage",
