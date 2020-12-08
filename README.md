@@ -4,7 +4,7 @@
 
 Transforms `export default something` to `export = something` for CommonJS module type declaration export.
 
-> *For most applications you won't need this plugin, but it is specially useful after* [`rollup-plugin-dts`](https://github.com/Swatinem/rollup-plugin-dts) or [`rolloup-plugin-typescript2`](https://github.com/ezolenko/rollup-plugin-typescript2) *(maybe others...) if your want to build a CommonJS module.*
+> *For most applications you won't need this plugin, but it is specially useful after* [`rollup-plugin-dts`](https://github.com/Swatinem/rollup-plugin-dts) or [`rolloup-plugin-typescript2`](https://github.com/ezolenko/rollup-plugin-typescript2) *(maybe others...) if you want to build a CommonJS module.*
 
 ## Install
 
@@ -14,68 +14,48 @@ npm i -D rollup-plugin-export-equals
 
 ## Usage
 
-### with `rollup-plugin-dts@0.x.x`
-
-```javascript
-// rollup.config.js
-import { dts } from "rollup-plugin-dts";
-import equals from "rollup-plugin-export-equals";
-
-export default {
-
-  input: "src/index.ts",
-  output: { file: "index.d.ts", format: "es" },
-
-  plugins: [
-    dts(),
-    equals(),
-  ]
-
-}
-```
-
 ### with `rollup-plugin-dts@1.x.x`
 
 ```javascript
 // rollup.config.js
-import dts from "rollup-plugin-dts";
-import equals from "rollup-plugin-export-equals";
+
+import dts from 'rollup-plugin-dts';
+import equals from 'rollup-plugin-export-equals';
 
 export default {
 
-  input: "input/index.d.ts",
-  output: { file: "out/index.d.ts", format: "es" },
+  input: 'input/index.d.ts',
+  output: { file: 'out/index.d.ts', format: 'es' },
 
   plugins: [
     dts(),
     equals(),
-  ]
+  ],
 
-}
+};
 ```
 
 ### with `rollup-plugin-typescript2`
 
 ```javascript
 // rollup.config.js
-import ts from "rollup-plugin-typescript2";
-import equals from "rollup-plugin-export-equals";
+
+import ts from 'rollup-plugin-typescript2';
+import equals from 'rollup-plugin-export-equals';
 
 export default {
 
-  input: "src/index.ts",
-  output: { file: "dist/index.js", format: "cjs" },
+  input: 'src/index.ts',
+  output: { file: 'dist/index.js', format: 'cjs' },
 
   plugins: [
-    ts({
-      // ... rollup-plugin-typescript2 options
-    }),
+    ts(),
     equals({
-      file: "index.d.ts"
+      file: 'path/to/index.d.ts'
     }),
-  ]
+  ],
 
-}
+};
 ```
 
 ## Options
@@ -86,18 +66,18 @@ export default {
 file: string;
 ```
 
-Path to the file which content to be replaced. If provided the plugin will transform the file in-place instead of the bundled output. It will process the file after it has been writen to disk. For example after `rollup-plugin-typescript2` has written it to disk.
+Path to the file which content to be replaced. If provided the plugin will transform the file in-place instead of the bundled output. It will process the file after it has been written to disk. For example after `rollup-plugin-typescript2` has written it to disk.
 
 ### replace
 
 ```typescript
 replace: string;
-replace: (...args: any[]) => string;
-default: "export = $1"
+replace: (match: string, captured: string) => string;
+default: 'export = $1'
 ```
 
 String or function to be passed to `code.replace` function. `$1` refers to the original value captured from `export default ...`.
 
 ## License
 
-[MIT](LICENSE) &copy; [Manuel Fernández](https://github.com/manferlo81)
+[MIT](LICENSE) &copy; 2019 [Manuel Fernández](https://github.com/manferlo81)
