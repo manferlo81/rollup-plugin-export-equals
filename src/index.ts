@@ -2,8 +2,8 @@ import { readFile as fsReadFile, writeFile as fsWriteFile } from 'fs';
 import type { Plugin } from 'rollup';
 import { promisify } from 'util';
 
-const readFile: (filename: string) => Promise<Buffer> = promisify(fsReadFile);
-const writeFile: (filename: string, data: string) => Promise<void> = promisify<string, string>(fsWriteFile);
+const readFile = promisify<(path: string, encoding: 'utf-8') => Promise<string>>(fsReadFile);
+const writeFile = promisify<(path: string, data: string) => Promise<void>>(fsWriteFile);
 
 function equals(options: equals.ExportEqualsOptions = {}): Plugin {
 
@@ -36,11 +36,14 @@ function equals(options: equals.ExportEqualsOptions = {}): Plugin {
         return;
       }
 
-      const content = await readFile(filename);
+      const content = await readFile(
+        filename,
+        'utf-8',
+      );
 
       await writeFile(
         filename,
-        replaceExport(content.toString()),
+        replaceExport(content),
       );
 
     },
