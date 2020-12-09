@@ -1,8 +1,11 @@
-import { readFileSync } from 'fs';
+import { readFile as fsReadFile } from 'fs';
 import { resolve } from 'path';
 import dts from 'rollup-plugin-dts';
+import { promisify } from 'util';
 import generate from './tools/generate';
 import rollup from './tools/rollup';
+
+const readFile = promisify<(path: string, enconding: 'utf-8') => Promise<string>>(fsReadFile);
 
 const tempFolder = resolve(process.cwd(), 'node_modules/.cache/.temp');
 
@@ -49,8 +52,7 @@ test('should write using file mode', async () => {
     format: 'es',
   });
 
-  const content = readFileSync(file).toString();
-
+  const content = await readFile(file, 'utf-8');
   expect(content).toMatch('export = test');
 
 });
@@ -68,8 +70,7 @@ test('should skip file if not in file mode', async () => {
     format: 'es',
   });
 
-  const content = readFileSync(file).toString();
-
+  const content = await readFile(file, 'utf-8');
   expect(content).toMatch('export = test');
 
 });
