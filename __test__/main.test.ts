@@ -1,17 +1,12 @@
-import { readFile as fsReadFile } from 'fs';
-import { resolve } from 'path';
 import dts from 'rollup-plugin-dts';
-import { promisify } from 'util';
 import generate from './tools/generate';
+import { readFile } from './tools/read-file';
+import { resolveTemp } from './tools/resolve-temp';
 import rollup from './tools/rollup';
-
-const readFile = promisify<(path: string, enconding: 'utf-8') => Promise<string>>(fsReadFile);
-
-const tempFolder = resolve(process.cwd(), 'node_modules/.cache/.temp');
 
 test('should transform code', async () => {
 
-  const code = await generate('example1.d.ts', [
+  const code = await generate('default-export.d.ts', [
     dts(),
   ]);
 
@@ -21,7 +16,7 @@ test('should transform code', async () => {
 
 test('should skip if no match', async () => {
 
-  const code = await generate('example2.d.ts', [
+  const code = await generate('named-export.d.ts', [
     dts(),
   ]);
 
@@ -31,7 +26,7 @@ test('should skip if no match', async () => {
 
 test('should respect replace option', async () => {
 
-  const code = await generate('example1.d.ts', [
+  const code = await generate('default-export.d.ts', [
     dts(),
   ], { replace: 'module.exports = $1' });
 
@@ -41,9 +36,9 @@ test('should respect replace option', async () => {
 
 test('should write using file mode', async () => {
 
-  const file = resolve(tempFolder, 'output1.d.ts');
+  const file = resolveTemp('output1.d.ts');
 
-  const build = await rollup('example1.d.ts', [
+  const build = await rollup('default-export.d.ts', [
     dts(),
   ], { file });
 
@@ -59,9 +54,9 @@ test('should write using file mode', async () => {
 
 test('should skip file if not in file mode', async () => {
 
-  const file = resolve(tempFolder, 'output2.d.ts');
+  const file = resolveTemp('output2.d.ts');
 
-  const build = await rollup('example1.d.ts', [
+  const build = await rollup('default-export.d.ts', [
     dts(),
   ]);
 
