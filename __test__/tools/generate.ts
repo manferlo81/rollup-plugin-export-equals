@@ -1,11 +1,8 @@
 import type { Plugin } from 'rollup';
-import equals from '../../src';
-import rollup from './rollup';
+import { rollup } from './rollup';
 
-async function generate(filename: string, plugins: Plugin[], options?: equals.ExportEqualsOptions): Promise<string> {
-  const build = await rollup(filename, plugins, options);
-  const { output: [{ code }] } = await build.generate({ file: 'output.d.ts' });
+export async function generate(input: string, plugins: Plugin[]): Promise<string> {
+  const build = await rollup(input, plugins);
+  const { output: [{ code }] } = await build.generate({});
   return code;
 }
-
-export default generate;

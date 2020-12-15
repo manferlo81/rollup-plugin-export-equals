@@ -1,71 +1,88 @@
+import { resolve } from 'path';
 import dts from 'rollup-plugin-dts';
-import generate from './tools/generate';
+import equals from '../src';
+import { generate } from './tools/generate';
+import { mockCWD } from './tools/mock-cwd';
 import { readFile } from './tools/read-file';
-import { resolveTemp } from './tools/resolve-temp';
-import rollup from './tools/rollup';
+import { rollup } from './tools/rollup';
 
 test('should transform code', async () => {
 
-  const code = await generate('default-export.d.ts', [
+  const code = await mockCWD(() => generate('default-export.d.ts', [
     dts(),
-  ]);
+    equals(),
+  ]));
 
-  expect(code).toMatch('export = test');
+  expect(code).toMatch('export = num');
 
 });
 
 test('should skip if no match', async () => {
 
-  const code = await generate('named-export.d.ts', [
+  const code = await mockCWD(() => generate('named-export.d.ts', [
     dts(),
-  ]);
+    equals(),
+  ]));
 
-  expect(code).not.toMatch('export = test');
+  expect(code).not.toMatch('export = num');
 
 });
 
 test('should respect replace option', async () => {
 
-  const code = await generate('default-export.d.ts', [
+  const code = await mockCWD(() => generate('default-export.d.ts', [
     dts(),
-  ], { replace: 'module.exports = $1' });
+    equals({ replace: 'module.exports = $1' }),
+  ]));
 
-  expect(code).toMatch('module.exports = test');
+  expect(code).toMatch('module.exports = num');
 
 });
 
 test('should write using file mode', async () => {
 
-  const file = resolveTemp('output1.d.ts');
+  const content = await mockCWD(async () => {
 
-  const build = await rollup('default-export.d.ts', [
-    dts(),
-  ], { file });
+    const file = resolve('output.d.ts');
 
-  await build.write({
-    file,
-    format: 'es',
+    const build = await rollup('default-export.d.ts', [
+      dts(),
+      equals({ file }),
+    ]);
+
+    await build.write({
+      file,
+      format: 'es',
+    });
+
+    return await readFile(file, 'utf-8');
+
   });
 
-  const content = await readFile(file, 'utf-8');
-  expect(content).toMatch('export = test');
+  expect(content).toMatch('export = num');
 
 });
 
 test('should skip file if not in file mode', async () => {
 
-  const file = resolveTemp('output2.d.ts');
+  const content = await mockCWD(async () => {
 
-  const build = await rollup('default-export.d.ts', [
-    dts(),
-  ]);
+    const file = resolve('output.d.ts');
 
-  await build.write({
-    file,
-    format: 'es',
+    const build = await rollup('default-export.d.ts', [
+      dts(),
+      equals(),
+    ]);
+
+    await build.write({
+      file,
+      format: 'es',
+    });
+
+    return await readFile(file, 'utf-8');
+
   });
 
-  const content = await readFile(file, 'utf-8');
-  expect(content).toMatch('export = test');
+  expect(content).toMatch('export = num');
 
 });

@@ -1,16 +1,9 @@
-import type { Plugin } from 'rollup';
+import type { Plugin, RollupBuild } from 'rollup';
 import { rollup as rollupBuild } from 'rollup';
-import equals from '../../src';
-import { resolveExample } from './resolve-example';
 
-function rollup(filename: string, plugins: Plugin[], options?: equals.ExportEqualsOptions): ReturnType<typeof rollupBuild> {
+export function rollup(input: string, plugins: Plugin[]): Promise<RollupBuild> {
   return rollupBuild({
-    input: resolveExample(filename),
-    plugins: [
-      ...plugins,
-      equals(options),
-    ],
+    input,
+    plugins,
   });
 }
-
-export default rollup;
