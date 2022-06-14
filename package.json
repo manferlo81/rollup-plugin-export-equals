@@ -37,7 +37,7 @@
     "node": ">=8"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.0",
+    "@babel/core": "^7.18.5",
     "@babel/preset-env": "^7.15.0",
     "@types/jest": "^27.0.2",
     "@types/mock-fs": "^4.13.1",
