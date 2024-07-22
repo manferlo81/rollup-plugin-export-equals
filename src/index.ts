@@ -1,9 +1,5 @@
-import { readFile as fsReadFile, writeFile as fsWriteFile } from 'fs';
+import { readFile, writeFile } from 'fs/promises';
 import type { Plugin } from 'rollup';
-import { promisify } from 'util';
-
-const readFile = promisify<(path: string, encoding: 'utf-8') => Promise<string>>(fsReadFile);
-const writeFile = promisify<(path: string, data: string) => Promise<void>>(fsWriteFile);
 
 function equals(options: equals.ExportEqualsOptions = {}): Plugin {
 
@@ -12,9 +8,23 @@ function equals(options: equals.ExportEqualsOptions = {}): Plugin {
     replace = 'export = $1',
   } = options;
 
-  const reg = /export default (.*)/;
+  const captureIdPattern = '([a-zA-Z$_][\\w$_]*)';
 
-  const replaceExport = (code: string) => code.replace(reg, replace as never);
+  const strings = [
+    `export default ${captureIdPattern}`,
+    `export { ${captureIdPattern} as default }`,
+  ];
+
+  const patterns = strings.map((str) => new RegExp(str));
+
+  const replaceExport = (code: string): string => {
+    for (const pattern of patterns) {
+      if (pattern.test(code)) {
+        return code.replace(pattern, replace as string & equals.ReplaceFunction);
+      }
+    }
+    return code;
+  };
 
   return {
 
@@ -22,8 +32,8 @@ function equals(options: equals.ExportEqualsOptions = {}): Plugin {
 
     renderChunk(code) {
 
-      if (filename || !reg.test(code)) {
-        return null;
+      if (filename) {
+        return;
       }
 
       return replaceExport(code);

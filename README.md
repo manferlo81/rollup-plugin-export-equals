@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/manferlo81/rollup-plugin-export-equals.svg?style=svg)](https://circleci.com/gh/manferlo81/rollup-plugin-export-equals) [![npm](https://badgen.net/npm/v/rollup-plugin-export-equals)](https://www.npmjs.com/package/rollup-plugin-export-equals) [![codecov](https://codecov.io/gh/manferlo81/rollup-plugin-export-equals/branch/master/graph/badge.svg)](https://codecov.io/gh/manferlo81/rollup-plugin-export-equals) [![dependencies](https://badgen.net/david/dep/manferlo81/rollup-plugin-export-equals)](https://david-dm.org/manferlo81/rollup-plugin-export-equals) [![dev dependencies](https://badgen.net/david/dev/manferlo81/rollup-plugin-export-equals)](https://david-dm.org/manferlo81/rollup-plugin-export-equals?type=dev) [![peer dependencies](https://badgen.net/david/peer/manferlo81/rollup-plugin-export-equals)](https://david-dm.org/manferlo81/rollup-plugin-export-equals?type=peer) [![packagephobia](https://badgen.net/packagephobia/install/rollup-plugin-export-equals)](https://packagephobia.now.sh/result?p=rollup-plugin-export-equals) [![bundlephobia](https://badgen.net/bundlephobia/min/rollup-plugin-export-equals)](https://bundlephobia.com/result?p=rollup-plugin-export-equals) [![types](https://img.shields.io/npm/types/rollup-plugin-export-equals.svg)](https://github.com/microsoft/typescript) [![Known Vulnerabilities](https://snyk.io/test/github/manferlo81/rollup-plugin-export-equals/badge.svg?targetFile=package.json)](https://snyk.io/test/github/manferlo81/rollup-plugin-export-equals?targetFile=package.json) [![license](https://badgen.net/github/license/manferlo81/rollup-plugin-export-equals)](LICENSE)
 
-Transforms `export default something` to `export = something` for CommonJS module type declaration export.
+Transforms `export default something` or `export { something as default }` to `export = something` for CommonJS module type declaration export.
 
 > *For most applications you won't need this plugin, but it is specially useful after* [`rollup-plugin-dts`](https://github.com/Swatinem/rollup-plugin-dts) or [`rolloup-plugin-typescript2`](https://github.com/ezolenko/rollup-plugin-typescript2) *(maybe others...) if you want to build a CommonJS module.*
 
@@ -25,7 +25,7 @@ import equals from 'rollup-plugin-export-equals';
 export default {
 
   input: 'input/index.d.ts',
-  output: { file: 'out/index.d.ts', format: 'es' },
+  output: { file: 'out/index.d.ts', format: 'cjs' },
 
   plugins: [
     dts(),
@@ -80,4 +80,4 @@ String or function to be passed to `code.replace` function. `$1` refers to the o
 
 ## License
 
-[MIT](LICENSE) &copy; 2019 [Manuel Fernández](https://github.com/manferlo81)
+[MIT](LICENSE) &copy; 2019-2024 [Manuel Fernández](https://github.com/manferlo81)
