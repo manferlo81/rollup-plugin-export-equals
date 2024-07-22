@@ -9,7 +9,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/manferlo81/rollup-plugin-export-equals/badge.svg?targetFile=package.json)](https://snyk.io/test/github/manferlo81/rollup-plugin-export-equals?targetFile=package.json)
 [![license](https://badgen.net/github/license/manferlo81/rollup-plugin-export-equals)](LICENSE)
 
-Transforms `export default something` or `export { something as default }` to `export = something` for CommonJS module type declaration export.
+Transforms `export default x` or `export { x as default }` to `export = x` for CommonJS module type declaration export.
 
 > *For most applications you won't need this plugin, but it is specially useful after* [`rollup-plugin-dts`](https://github.com/Swatinem/rollup-plugin-dts) or [`rolloup-plugin-typescript2`](https://github.com/ezolenko/rollup-plugin-typescript2) *(maybe others...) if you want to build a CommonJS module.*
 
