@@ -1,1 +1,1 @@
-npx run-s clean lint test
+npm run prerelease
