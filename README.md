@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/manferlo81/rollup-plugin-export-equals.svg?style=svg)](https://circleci.com/gh/manferlo81/rollup-plugin-export-equals)
 [![npm](https://badgen.net/npm/v/rollup-plugin-export-equals)](https://www.npmjs.com/package/rollup-plugin-export-equals)
-[![codecov](https://codecov.io/gh/manferlo81/rollup-plugin-export-equals/branch/master/graph/badge.svg)](https://codecov.io/gh/manferlo81/rollup-plugin-export-equals)
+[![codecov](https://codecov.io/gh/manferlo81/rollup-plugin-export-equals/branch/main/graph/badge.svg)](https://codecov.io/gh/manferlo81/rollup-plugin-export-equals)
 [![packagephobia](https://badgen.net/packagephobia/install/rollup-plugin-export-equals)](https://packagephobia.now.sh/result?p=rollup-plugin-export-equals)
 [![bundlephobia](https://badgen.net/bundlephobia/min/rollup-plugin-export-equals)](https://bundlephobia.com/result?p=rollup-plugin-export-equals)
 [![types](https://img.shields.io/npm/types/rollup-plugin-export-equals.svg)](https://github.com/microsoft/typescript)
