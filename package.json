@@ -60,7 +60,7 @@
     "rollup-plugin-dts": "^6.1.1",
     "standard-version": "^9.5.0",
     "ts-jest": "^29.2.3",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   },
   "peerDependencies": {
     "rollup": "^2.0.0||^3.0.0||^4.0.0"
