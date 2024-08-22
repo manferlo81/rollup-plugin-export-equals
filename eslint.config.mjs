@@ -20,7 +20,7 @@ const stylisticRules = pluginRules('@stylistic', {
   semi: rule('always'),
   quotes: rule('single'),
   indent: rule(2),
-  'linebreak-style': rule('windows'),
+  'linebreak-style': rule('unix'),
 
   'quote-props': rule('as-needed'),
   'arrow-parens': rule('always'),
