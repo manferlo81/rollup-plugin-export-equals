@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 import dts from 'rollup-plugin-dts';
-import equals from '../src';
+import { equals } from '../src';
 import { generate } from './tools/generate';
 import { mockCWD } from './tools/mock-cwd';
 import { readFile } from './tools/read-file';

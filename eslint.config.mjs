@@ -41,7 +41,7 @@ export default config(
   { ignores: ['dist', 'coverage'] },
   { languageOptions: { globals: globals.node } },
   js.configs.recommended,
-  ...typescriptConfig,
   stylistic.configs['recommended-flat'],
+  ...typescriptConfig,
   { rules: { ...eslintRules, ...stylisticRules } },
 );
