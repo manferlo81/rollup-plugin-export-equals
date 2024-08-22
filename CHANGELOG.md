@@ -2,6 +2,20 @@
 
 ## Version History
 
+## [0.4.0](https://github.com/manferlo81/rollup-plugin-export-equals/compare/v0.3.7...v0.4.0) (2024-08-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* Plugin and types are now named exports no default export
+
+### Features
+
+* replace "export { value as default }" ([3155568](https://github.com/manferlo81/rollup-plugin-export-equals/commit/3155568fed09fb613cf80b3e36c9a8a13a5b20b9))
+
+
+* Named exports ([653a413](https://github.com/manferlo81/rollup-plugin-export-equals/commit/653a41380886a3037611710232260be31c4a48f4))
+
 ### [0.3.7](https://github.com/manferlo81/rollup-plugin-export-equals/compare/v0.3.6...v0.3.7) (2020-10-23)
 
 ### Bug Fixes
