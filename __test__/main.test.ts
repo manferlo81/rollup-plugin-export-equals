@@ -28,11 +28,22 @@ test('should skip if no match', async () => {
 
 });
 
-test('should respect replace option', async () => {
+test('should respect replace option as string', async () => {
 
   const code = await mockCWD(() => generate('default-export.d.ts', [
     dts(),
     equals({ replace: 'module.exports = $1' }),
+  ]));
+
+  expect(code).toMatch('module.exports = num');
+
+});
+
+test('should respect replace option as function', async () => {
+
+  const code = await mockCWD(() => generate('default-export.d.ts', [
+    dts(),
+    equals({ replace: (_match, id) => `module.exports = ${id}` }),
   ]));
 
   expect(code).toMatch('module.exports = num');
