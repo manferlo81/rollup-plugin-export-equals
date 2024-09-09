@@ -12,17 +12,17 @@
   ],
   "type": "commonjs",
   "exports": {
-    "types": "./dist/index.d.ts",
-    "import": "./dist/export-equals.mjs",
-    "require": "./dist/export-equals.cjs",
-    "node": "./dist/export-equals.cjs",
-    "default": "./dist/export-equals.cjs"
+    "types": "./dist/types/index.d.ts",
+    "import": "./dist/esm/export-equals.mjs",
+    "require": "./dist/commonjs/export-equals.cjs",
+    "node": "./dist/commonjs/export-equals.cjs",
+    "default": "./dist/commonjs/export-equals.cjs"
   },
-  "main": "./dist/export-equals.cjs",
-  "module": "./dist/export-equals.mjs",
-  "jsnext:main": "./dist/export-equals.mjs",
-  "types": "./dist/index.d.ts",
-  "typings": "./dist/index.d.ts",
+  "main": "./dist/commonjs/export-equals.cjs",
+  "module": "./dist/esm/export-equals.mjs",
+  "jsnext:main": "./dist/esm/export-equals.mjs",
+  "types": "./dist/types/index.d.ts",
+  "typings": "./dist/types/index.d.ts",
   "scripts": {
     "clean:cache": "rimraf --glob node_modules/.cache/{bundlib,jest}",
     "clean:build": "rimraf dist coverage",
