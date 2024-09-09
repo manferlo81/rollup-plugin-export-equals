@@ -11,14 +11,14 @@ const normalizeRuleEntry = (entry) => {
 
 function createRuleNameNormalizer(pluginName) {
   if (!pluginName) return (ruleName) => ruleName;
+  const pluginPrefix = `${pluginName}/`;
   return (ruleName) => {
-    const pluginPrefix = `${pluginName}/`;
     if (ruleName.startsWith(pluginPrefix)) return ruleName;
     return `${pluginPrefix}${ruleName}`;
   };
 }
 
-const rules = (pluginName, rules) => {
+const normalizeRules = (pluginName, rules) => {
   const normalizeRuleName = createRuleNameNormalizer(pluginName);
   return Object.fromEntries(
     Object.entries(rules).map(([ruleName, ruleValue]) => {
@@ -27,51 +27,47 @@ const rules = (pluginName, rules) => {
   );
 };
 
-const eslintRules = rules(null, {
+const eslintRules = normalizeRules(null, {
   'no-useless-rename': 'error',
   'object-shorthand': 'error',
   'prefer-template': 'error',
 });
 
-const stylisticRules = rules('@stylistic', {
-  semi: 'always',
+const stylisticRules = normalizeRules('@stylistic', {
   indent: 2,
-  quotes: 'single',
   'linebreak-style': 'unix',
-
-  'quote-props': 'as-needed',
-  'arrow-parens': 'always',
   'no-extra-parens': 'all',
   'no-extra-semi': 'error',
-  'brace-style': '1tbs',
-
-  'member-delimiter-style': {},
   'padded-blocks': 'off',
 });
 
-const typescriptRules = rules('@typescript-eslint', {
+const typescriptRules = normalizeRules('@typescript-eslint', {
   'array-type': {
     default: 'array-simple',
     readonly: 'array-simple',
   },
 });
 
-const javascriptExtensions = ['js', 'cjs', 'mjs'];
-const javascriptExtString = javascriptExtensions.join(',');
+const stylisticPluginConfig = stylistic.configs.customize({
+  semi: true,
+  quotes: 'single',
+  quoteProps: 'as-needed',
+  arrowParens: true,
+  braceStyle: '1tbs',
+});
 
-const typescriptConfig = config(
+const typescriptPluginConfig = config(
   ...typescriptConfigs.strictTypeChecked,
   ...typescriptConfigs.stylisticTypeChecked,
   { languageOptions: { parserOptions: { projectService: true, tsconfigRootDir: process.cwd() } } },
-  { files: [`**/*.{${javascriptExtString}}`], ...typescriptConfigs.disableTypeChecked },
+  { files: ['**/*.{js,cjs,mjs}'], ...typescriptConfigs.disableTypeChecked },
 );
 
 export default config(
   { ignores: ['dist', 'coverage'] },
-  { files: [`**/*.{${javascriptExtString},ts}`] },
   { languageOptions: { globals: globals.node } },
   js.configs.recommended,
-  stylistic.configs['recommended-flat'],
-  ...typescriptConfig,
+  stylisticPluginConfig,
+  ...typescriptPluginConfig,
   { rules: { ...eslintRules, ...stylisticRules, ...typescriptRules } },
 );
