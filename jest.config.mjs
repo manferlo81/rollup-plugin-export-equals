@@ -10,10 +10,9 @@ const config = {
     'src/**/*.ts',
   ],
   coverageDirectory: 'coverage',
-  coverageReporters: [
-    process.env.CI ? 'json' : 'html',
-    'text',
-  ],
+  coverageReporters: process.env.CI
+    ? ['json', 'clover', 'cobertura']
+    : ['html', 'text'],
   coverageThreshold: {
     global: {
       branches: threshold,
@@ -22,6 +21,10 @@ const config = {
       statements: threshold,
     },
   },
+
+  testMatch: [
+    '**/__test__/**/*.test.ts',
+  ],
 
   verbose: true,
 };
