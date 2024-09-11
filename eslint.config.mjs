@@ -21,9 +21,9 @@ function createRuleNameNormalizer(pluginName) {
 const normalizeRules = (pluginName, rules) => {
   const normalizeRuleName = createRuleNameNormalizer(pluginName);
   return Object.fromEntries(
-    Object.entries(rules).map(([ruleName, ruleValue]) => {
-      return [normalizeRuleName(ruleName), normalizeRuleEntry(ruleValue)];
-    }),
+    Object.entries(rules).map(
+      ([ruleName, ruleValue]) => [normalizeRuleName(ruleName), normalizeRuleEntry(ruleValue)],
+    ),
   );
 };
 
