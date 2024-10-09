@@ -18,47 +18,39 @@ export function equals(options: ExportEqualsOptions = {}): Plugin {
 
   const patterns = strings.map((str) => new RegExp(str));
 
-  const replaceExport = (code: string): string => {
+  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+  const replaceExport = (code: string): string | void => {
     for (const pattern of patterns) {
       if (pattern.test(code)) {
         return code.replace(pattern, replace as string & ReplaceFunction);
       }
     }
-    return code;
   };
 
-  return {
+  const name = 'export-equals';
 
-    name: 'export-equals',
+  if (!filename) {
+    return { name, renderChunk: replaceExport };
+  }
 
-    renderChunk(code) {
+  const writeBundle = async () => {
 
-      if (filename) {
-        return;
-      }
+    const content = await readFile(
+      filename,
+      'utf-8',
+    );
 
-      return replaceExport(code);
+    const modifiedCode = replaceExport(content);
 
-    },
+    if (!modifiedCode) return;
 
-    async writeBundle() {
-
-      if (!filename) {
-        return;
-      }
-
-      const content = await readFile(
-        filename,
-        'utf-8',
-      );
-
-      await writeFile(
-        filename,
-        replaceExport(content),
-      );
-
-    },
+    await writeFile(
+      filename,
+      modifiedCode,
+    );
 
   };
+
+  return { name, writeBundle };
 
 }
