@@ -3,38 +3,15 @@ import stylistic from '@stylistic/eslint-plugin';
 import globals from 'globals';
 import { config, configs as typescriptConfigs } from 'typescript-eslint';
 
-const normalizeRuleEntry = (entry) => {
-  if (Array.isArray(entry)) return entry;
-  if (['off', 'warn', 'error'].includes(entry)) return entry;
-  return ['error', entry];
-};
-
-function createRuleNameNormalizer(pluginName) {
-  if (!pluginName) return (ruleName) => ruleName;
-  const pluginPrefix = `${pluginName}/`;
-  return (ruleName) => {
-    if (ruleName.startsWith(pluginPrefix)) return ruleName;
-    return `${pluginPrefix}${ruleName}`;
-  };
-}
-
-const normalizeRules = (pluginName, rules) => {
-  const normalizeRuleName = createRuleNameNormalizer(pluginName);
-  return Object.fromEntries(
-    Object.entries(rules).map(
-      ([ruleName, ruleValue]) => [normalizeRuleName(ruleName), normalizeRuleEntry(ruleValue)],
-    ),
-  );
-};
-
-const eslintRules = normalizeRules(null, {
+const eslintRules = normalizeRules({
   'no-useless-rename': 'error',
   'object-shorthand': 'error',
   'prefer-template': 'error',
+  'no-useless-concat': 'error',
 });
 
 const stylisticRules = normalizeRules('@stylistic', {
-  indent: 2,
+  quotes: 'single',
   'linebreak-style': 'unix',
   'no-extra-parens': 'all',
   'no-extra-semi': 'error',
@@ -49,10 +26,10 @@ const typescriptRules = normalizeRules('@typescript-eslint', {
 });
 
 const stylisticPluginConfig = stylistic.configs.customize({
+  indent: 2,
   semi: true,
-  quotes: 'single',
-  quoteProps: 'as-needed',
   arrowParens: true,
+  quoteProps: 'as-needed',
   braceStyle: '1tbs',
 });
 
@@ -64,6 +41,7 @@ const typescriptPluginConfig = config(
 );
 
 export default config(
+  { files: ['**/*.{js,cjs,mjs,ts}'] },
   { ignores: ['dist', 'coverage'] },
   { languageOptions: { globals: globals.node } },
   js.configs.recommended,
@@ -71,3 +49,35 @@ export default config(
   ...typescriptPluginConfig,
   { rules: { ...eslintRules, ...stylisticRules, ...typescriptRules } },
 );
+
+function normalizeRuleEntry(entry) {
+  if (Array.isArray(entry)) return entry;
+  if (['off', 'warn', 'error'].includes(entry)) return entry;
+  return ['error', entry];
+}
+
+function normalizeRulesObject(rules, pluginName) {
+  const entries = Object.entries(rules);
+  if (!pluginName) {
+    return Object.fromEntries(
+      entries.map(
+        ([ruleName, ruleValue]) => [ruleName, normalizeRuleEntry(ruleValue)],
+      ),
+    );
+  }
+  const pluginPrefix = `${pluginName}/`;
+  const normalizeRuleName = (ruleName) => {
+    if (ruleName.startsWith(pluginPrefix)) return ruleName;
+    return `${pluginPrefix}${ruleName}`;
+  };
+  return Object.fromEntries(
+    entries.map(
+      ([ruleName, ruleValue]) => [normalizeRuleName(ruleName), normalizeRuleEntry(ruleValue)],
+    ),
+  );
+}
+
+function normalizeRules(pluginOrRules, rules) {
+  if (!rules) return normalizeRulesObject(pluginOrRules);
+  return normalizeRulesObject(rules, pluginOrRules);
+}
