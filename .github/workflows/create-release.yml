@@ -15,10 +15,12 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout, Setup Node.js v20.x and Install dependencies
-        uses: manferlo81/action-checkout-node-install@initial
+      - name: Checkout, Setup Node.js v${{ env.NODE_VERSION }} and Install dependencies
+        uses: manferlo81/action-checkout-node-install@v0
         with:
-          node-version: 20.x
+          node-version: ${{ env.NODE_VERSION }}
+        env:
+          NODE_VERSION: 20.x
 
       - name: Build
         run: npm run build
@@ -27,8 +29,6 @@ jobs:
         run: npm pack
 
       - name: Create Release
-        uses: softprops/action-gh-release@v2
+        uses: manferlo81/action-auto-release@v0
         with:
-          generate_release_notes: true
           files: rollup-plugin-export-equals-*.tgz
-          make_latest: true

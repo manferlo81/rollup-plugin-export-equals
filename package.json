@@ -36,7 +36,7 @@
     "dev": "bundlib -dw",
     "ci-build": "run-s lint test build",
     "clean-build": "run-s clean ci-build",
-    "prerelease": "run-s clean ci-build",
+    "prerelease": "run-s clean-build",
     "release": "standard-version",
     "prepare": "husky"
   },

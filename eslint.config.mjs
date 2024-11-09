@@ -51,20 +51,17 @@ export default config(
 );
 
 function normalizeRuleEntry(entry) {
-  if (Array.isArray(entry)) return entry;
-  if (['off', 'warn', 'error'].includes(entry)) return entry;
+  if (Array.isArray(entry) || ['off', 'error', 'warn'].includes(entry)) return entry;
   return ['error', entry];
 }
 
 function normalizeRulesObject(rules, pluginName) {
   const entries = Object.entries(rules);
-  if (!pluginName) {
-    return Object.fromEntries(
-      entries.map(
-        ([ruleName, ruleValue]) => [ruleName, normalizeRuleEntry(ruleValue)],
-      ),
-    );
-  }
+  if (!pluginName) return Object.fromEntries(
+    entries.map(
+      ([ruleName, ruleValue]) => [ruleName, normalizeRuleEntry(ruleValue)],
+    ),
+  );
   const pluginPrefix = `${pluginName}/`;
   const normalizeRuleName = (ruleName) => {
     if (ruleName.startsWith(pluginPrefix)) return ruleName;
