@@ -23,6 +23,9 @@
   "jsnext:main": "./dist/esm/export-equals.mjs",
   "types": "./dist/types/index.d.ts",
   "typings": "./dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "clean:cache": "rimraf --glob node_modules/.cache/{bundlib,jest}",
     "clean:build": "rimraf dist coverage",
