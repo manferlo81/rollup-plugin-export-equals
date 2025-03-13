@@ -1,8 +1,7 @@
 const threshold = 60;
 
-/** @type { import("jest").Config } */
+/** @type { import("ts-jest").JestConfigWithTsJest } */
 const config = {
-  cacheDirectory: 'node_modules/.cache/jest',
   preset: 'ts-jest',
 
   collectCoverage: !process.env.SKIP_COVERAGE,
@@ -11,8 +10,8 @@ const config = {
   ],
   coverageDirectory: 'coverage',
   coverageReporters: process.env.CI
-    ? ['json', 'clover', 'cobertura']
-    : ['html', 'text'],
+    ? ['text', 'json', 'clover', 'cobertura']
+    : ['text', 'html'],
   coverageThreshold: {
     global: {
       branches: threshold,
@@ -26,6 +25,7 @@ const config = {
     '**/__test__/**/*.test.ts',
   ],
 
+  cacheDirectory: 'node_modules/.cache/jest',
   verbose: true,
 };
 
