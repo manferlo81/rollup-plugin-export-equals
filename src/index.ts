@@ -1,5 +1,5 @@
-export { equals } from './plugin';
+export { equals } from './plugin'
 export type {
   ExportEqualsOptions,
   ReplaceFunction,
-} from './types';
+} from './types'

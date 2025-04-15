@@ -1,6 +1,6 @@
-export type ReplaceFunction = (match: string, ...args: string[]) => string;
+export type ReplaceFunction = (match: string, ...args: string[]) => string
 
 export interface ExportEqualsOptions {
-  file?: string;
-  replace?: ReplaceFunction | string;
+  file?: string
+  replace?: ReplaceFunction | string
 }

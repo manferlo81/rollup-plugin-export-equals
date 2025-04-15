@@ -1,5 +1,5 @@
-import mock from 'mock-fs';
-import { createFileContent } from './create-file-content';
+import mock from 'mock-fs'
+import { createFileContent } from './create-file-content'
 
 export async function mockCWD<R>(callback: () => R | Promise<R>): Promise<R> {
   mock(
@@ -19,10 +19,10 @@ export async function mockCWD<R>(callback: () => R | Promise<R>): Promise<R> {
       createCwd: false,
       createTmp: false,
     },
-  );
+  )
   try {
-    return await callback();
+    return await callback()
   } finally {
-    mock.restore();
+    mock.restore()
   }
 }
