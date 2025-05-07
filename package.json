@@ -53,7 +53,7 @@
     "@stylistic/eslint-plugin": "^4.2.0",
     "@types/jest": "^29.5.14",
     "@types/mock-fs": "^4.13.4",
-    "@types/node": "^22.15.11",
+    "@types/node": "^22.15.14",
     "bundlib": "^0.21.4",
     "chokidar": "^4.0.3",
     "core-js": "^3.42.0",
